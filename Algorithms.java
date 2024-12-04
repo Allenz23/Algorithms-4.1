@@ -15,6 +15,7 @@ public class Algorithms {
         int smallest = smallest();
         int sum = sum();
         double avg = avg();
+        int mode = mode();
         System.out.println("odds: " + odds);
         System.out.println("evens: " + evens);
         System.out.println("dubs: " + dubs);
@@ -23,6 +24,7 @@ public class Algorithms {
         System.out.println("smallest: " + smallest);
         System.out.println("sum: " + sum);
         System.out.println("avg: " + avg);
+        System.out.println("mode: " + mode);
 
         s.close();
     }
@@ -102,16 +104,37 @@ public class Algorithms {
         return sum;
     }
     public static int length() throws FileNotFoundException {
+        s = new Scanner (f);
         int length = 0;
         while (s.hasNext()) {
-            length = length + 1;
+            s.nextInt();
+            length++;
         }
         return length;
     }
     public static double avg() throws FileNotFoundException {
         double sum = sum();
         int length = length();
-        return length;
-
+        return sum/length;
     }
-}
+    public static int mode() throws FileNotFoundException {
+        s = new Scanner (f);
+        int num = 0;
+        int times = 0;
+        for (int i = 0; i<1000; i++){
+            int count = 0;
+            int temp = 0;
+            while (s.hasNext()){
+                temp = s.nextInt();
+                if (temp==i){
+                    count++;
+                }
+            }
+            if (count>times){
+                num = i;
+                times = count;
+            }
+        }
+        return num;
+        }
+    }
