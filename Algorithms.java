@@ -7,7 +7,7 @@ public class Algorithms {
     private static Scanner s;
     public static void main(String[] args) throws FileNotFoundException {
         f = new File("Numbers.txt");
-        int odds = odds();
+        /*int odds = odds();
         int evens = evens();
         int dubs = dubs();
         int m500 = m500();
@@ -15,7 +15,8 @@ public class Algorithms {
         int smallest = smallest();
         int sum = sum();
         double avg = avg();
-        int mode = mode();
+        int times = times(2);
+        //int mode = mode();
         System.out.println("odds: " + odds);
         System.out.println("evens: " + evens);
         System.out.println("dubs: " + dubs);
@@ -24,8 +25,18 @@ public class Algorithms {
         System.out.println("smallest: " + smallest);
         System.out.println("sum: " + sum);
         System.out.println("avg: " + avg);
-        System.out.println("mode: " + mode);
-
+        System.out.println("times: " + times);
+        //System.out.println("mode: " + mode); */
+        int mode = 0;
+        int mostNum = 0;
+        for (int i = 150; i<=150 ; i++){
+            int temp = times(i);
+            if (temp>mode){
+                mode = temp;
+                mostNum = i;
+            }
+        }
+        System.out.println(mode);
         s.close();
     }
 
@@ -117,24 +128,15 @@ public class Algorithms {
         int length = length();
         return sum/length;
     }
-    public static int mode() throws FileNotFoundException {
+    public static int times(int n) throws FileNotFoundException {
         s = new Scanner (f);
-        int num = 0;
-        int times = 0;
-        for (int i = 0; i<1000; i++){
-            int count = 0;
-            int temp = 0;
-            while (s.hasNext()){
-                temp = s.nextInt();
-                if (temp==i){
-                    count++;
-                }
-            }
-            if (count>times){
-                num = i;
-                times = count;
+        int count = 0;
+        while (s.hasNext()){
+            if (n==s.nextInt()){
+                count++;
             }
         }
-        return num;
-        }
+        return count;
+    }
+
     }
